@@ -12,42 +12,52 @@ class room{ //BASE CLASS 2
 			string type;
 			string building;
 };
-class student:public person //declare the inheritance
-	{
-	
+class student:public person{ //declare the inheritance
+	public:
+		
 	}; //end
-class faculty:public person //inheriets publicly from person
-	{
+class faculty:public person{ //inheriets publicly from person
 		private:
-		string Speciality;
+		 string Speciality;
+		public:
+			
 	};//end
-class tech:public person //name of class
-	{
+class tech:public person { //name of class	
 	private:
-		string Speciality;	
-	};//end
-class janitor:public person
-	{
+		string Speciality;
+	public:
+		void SetSpeciality(string sp);
+		string GetSpeciality(void);
 		
 	};//end
-class FacOffices:public room
-	{
+class janitor:public person{
+
+		
+	};//end
+class FacOffices:public room{
 	private:
 		string Faculty;
+	public:	
+		void Setfaculty(string fa);
+		string Getfaculty(void);
+	
 	};//end
-class ClRooms:public room
-	{
+class ClRooms:public room{
 	private:
 		float capacity;
+	public:	
+		void SetCapacity(string ca);
+		string GetCapacity(void);
+	
 	};//end
-class TechRooms:public room
-	{
+class TechRooms:public room{
 	private:
 		int hazardLevel;
+	public:
+		void SetHL(string ha);
+		string GetHL(void);	
+	
 	};//end
-
-
-
 int main()
 {
 		
