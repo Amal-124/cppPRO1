@@ -7,9 +7,15 @@ class person { //BASE CLASS
 			string name;
 			string role;
 	public:
-			//constructers
+		void SetID(string ID){id =ID;}
+		string GetID(void){ return id; }
+		void SetNAME(string NAME){name =NAME;}
+		string GetNAME(void){ return name; }
+		void SetROLE(string ROLE){role =ROLE;}	
+		string GetROLE(void){ return role; }
+	
 	};
-
+	   
 class room{ //BASE CLASS 2
 	protected:
 			string id; //memebers-attributes
@@ -24,20 +30,18 @@ class faculty:public person{ //inheriets publicly from person
 		private:
 		 string Speciality;
 		public:
-			//constructer that inheiertes
+			faculty(string i, string n, string r, string s){id =i; name=n; role=r; Speciality =s;  } //constructer-
+		    string getSpeciality(){return Speciality;};	//constructer that inheiertes
 			
 	};//end
 class tech:public person { //name of class	
 	private:
 		string Speciality;
 	public:
-		void SetSpeciality(string SP);
-		string GetSpeciality(void);
+		void SetSpeciality(string SP){Speciality =SP;}	
+		string GetSpeciality(void){ return Speciality; }
 		
 	};//end
-// setter and getter for the class tech
-void tech::SetSpeciality(string SP) {Speciality =SP;}	
-string tech::GetSpeciality(void){ return Speciality; }
 
 class janitor:public person{
 
@@ -47,13 +51,12 @@ class FacOffices:public room{ //constructer
 	private:
 		string Faculty;
 	public:	
-		void Setfaculty(string FA);
-		string Getfaculty(void);
+	
+		void Setfaculty(string FA){Faculty =FA;}
+		string Getfaculty(void){ return Faculty; }
 	
 	};//end
-// setter and getter for the class	
-void FacOffices::Setfaculty(string FA) {Faculty =FA;}	
-string FacOffices::Getfaculty(void){ return Faculty; }	
+
 
 class ClRooms:public room{
 	private:
@@ -71,15 +74,16 @@ class TechRooms:public room{
 	private:
 		int hazardLevel;
 	public:
-		void SetHL(string ha);
+		void SetHL(int ha);
 		int GetHL(void);	
 	
 	};//end
 // setter and getter for the class	
-void TechRooms::SetHL(string ha){ hazardLevel = ha;}
-string TechRooms::GetHL(void){return hazardLevel;}
+void TechRooms::SetHL(int ha){ hazardLevel = ha;}
+int TechRooms::GetHL(void){return hazardLevel;}
 int main()
-{
-		
+{	
+	person p1;
+	p1.SetID("45"); p1.SetNAME("ABCD"); p1.SetROLE("lll")	;
 	return 0;	
 }
