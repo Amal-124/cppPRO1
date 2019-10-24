@@ -83,7 +83,8 @@ void TechRooms::SetHL(int ha){ hazardLevel = ha;}
 int TechRooms::GetHL(void){return hazardLevel;}
 int main()
 {	
-	person p1;
-	p1.SetID("45"); p1.SetNAME("ABCD"); p1.SetROLE("lll")	;
+	faculty f1("12","ama");
+	faculty f2()
+	//p1.SetID("45"); p1.SetNAME("ABCD"); p1.SetROLE("lll")	;
 	return 0;	
 }
