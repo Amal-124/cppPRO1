@@ -26,7 +26,14 @@ class room{ //BASE CLASS 2
 			string id; //memebers-attributes
 			string type;
 			string building;
+	public:
+			room(string, string , string);
+			room();
+			~room();		
 };
+room::room(){}
+room::~room(){}
+room::room(string ID, string TYPE, string BUILD){id =ID; type=TYPE; building =BUILD;}
 class student:public person{ //declare the inheritance
 	public:
 		
