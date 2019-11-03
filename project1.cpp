@@ -1,4 +1,5 @@
 #include <iostream> //access control system
+
 using namespace std;
 // each one has a specific room to access 
 class person { //BASE CLASS
@@ -60,6 +61,7 @@ class janitor:public person{
 
 		
 	friend class ClRooms;friend class TechRooms;friend class FacOffices;};//end friend classes
+	
 class FacOffices:public room{ //constructer
 	private:
 		faculty* Faculty; //pointer
@@ -69,34 +71,61 @@ class FacOffices:public room{ //constructer
 	    //string Getfaculty(void){ return Faculty; }
 		void Setfaculty(faculty* val){Faculty =val;} 
 		faculty* Getfaculty(){ return Faculty;} //get with a pointer
-		FacOffices(string i, string t, string b, faculty* f){ id =i; type=t; building d;}
+		
+		
+		FacOffices(string i, string t, string b, faculty* f){ id =i; type=t; building= b; Faculty=f;}
 		
 		bool GrantAccess(person p){ //function
+		cout << "Checking access for " << Faculty->GetNAME()<< ".... " <<endl;
 		if(p.GetROLE() == "faculty" && p.GetNAME()==Faculty->GetNAME()) //one condition is engo
-		{ cout << "welcome"<< p.GetNAME(); return true;}
-		else {cout << "Access denied"; return false ;}} 
-	    friend class faculty;};//end
+		{ 
+			cout << "welcome"<< p.GetNAME(); 
+			return true;
+		}
+		else 
+		{
+			cout << "Access denied"; return false ;
+		}
+		} 
+	    friend class faculty;
+};//end
 class ClRooms:public room{
 	private:
 		float capacity;
+		student *st; //a pointer object
 	public:	
 		void SetCapacity(float ca){capacity = ca;}
 		float GetCapacity(void){return capacity;}
-	
+	bool GrantAccess(person p){ //function
+		if(p.GetROLE() == "student" && p.GetNAME()==st->GetNAME()) //one condition is engo
+		{ cout << "welcome"<< p.GetNAME(); return true;}
+		else {cout << "Access denied"; return false ;}} 
+		
 	friend class student;friend class faculty; };//end
 class TechRooms:public room{
 	private:
 		int hazardLevel;
+		tech * te; //a pointer object
 	public:
 		void SetHL(int ha){ hazardLevel = ha;}
 		int GetHL(void){return hazardLevel;}	
-	
+		TechRooms(string i, string t, string b, int h, tech * vt)
+		{ 
+		id =i; type=t; building= b; hazardLevel= h; te=vt;
+		}	
+	bool GrantAccess(person p){ //function
+		if(p.GetROLE() == "tech" && p.GetNAME()==te->GetNAME()) //one condition is engo
+		{ cout << "welcome"<< p.GetNAME(); return true;}
+		else {cout << "Access denied"; return false ;}} 
+		
 	friend class tech;};//end
 
 int main(){	
-faculty p1("muna","2011","faculty","IT");
-faculty p2("maryam","2341","faculty","IT");
-FacOffices O1("C123", "office", "building", &p2);
+faculty p1("2011","muna","faculty","IT");
+faculty p2("2341","maryam","faculty","IT");
+FacOffices O1("C123", "office", "building", &p1);
 O1.GrantAccess(p1);
+TechRooms T1("C123", "techroom", "building", 3, &p1);
+T1.GrantAccess(p1);
 	return 0;	
 }
