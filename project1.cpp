@@ -55,6 +55,7 @@ class tech:public person { //name of class
 	public:
 		void SetSpeciality(string SP){Speciality =SP;}	
 		string GetSpeciality(void){ return Speciality; }
+		tech(string i, string n, string r, string s){id =i; name=n; role=r; Speciality =s;  }
 		
 	friend class TechRooms;};//end
 class janitor:public person{
@@ -76,15 +77,15 @@ class FacOffices:public room{ //constructer
 		FacOffices(string i, string t, string b, faculty* f){ id =i; type=t; building= b; Faculty=f;}
 		
 		bool GrantAccess(person p){ //function
-		cout << "Checking access for " << Faculty->GetNAME()<< ".... " <<endl;
+		//cout << "Checking access for " << Faculty->GetNAME()<< ".... " <<endl;
 		if(p.GetROLE() == "faculty" && p.GetNAME()==Faculty->GetNAME()) //one condition is engo
 		{ 
-			cout << "welcome"<< p.GetNAME(); 
+			cout << "welcome "<< p.GetNAME() <<endl;
 			return true;
 		}
 		else 
 		{
-			cout << "Access denied"; return false ;
+			cout << "Access denied "; return false ;
 		}
 		} 
 	    friend class faculty;
@@ -98,7 +99,7 @@ class ClRooms:public room{
 		float GetCapacity(void){return capacity;}
 	bool GrantAccess(person p){ //function
 		if(p.GetROLE() == "student" && p.GetNAME()==st->GetNAME()) //one condition is engo
-		{ cout << "welcome"<< p.GetNAME(); return true;}
+		{ cout << "welcome "<< p.GetNAME(); return true;}
 		else {cout << "Access denied"; return false ;}} 
 		
 	friend class student;friend class faculty; };//end
@@ -115,7 +116,7 @@ class TechRooms:public room{
 		}	
 	bool GrantAccess(person p){ //function
 		if(p.GetROLE() == "tech" && p.GetNAME()==te->GetNAME()) //one condition is engo
-		{ cout << "welcome"<< p.GetNAME(); return true;}
+		{ cout << "welcome "<< p.GetNAME(); return true;}
 		else {cout << "Access denied"; return false ;}} 
 		
 	friend class tech;};//end
@@ -123,9 +124,10 @@ class TechRooms:public room{
 int main(){	
 faculty p1("2011","muna","faculty","IT");
 faculty p2("2341","maryam","faculty","IT");
+tech p3("2341","maryam","tech","IT");
 FacOffices O1("C123", "office", "building", &p1);
 O1.GrantAccess(p1);
-TechRooms T1("C123", "techroom", "building", 3, &p1);
-T1.GrantAccess(p1);
+TechRooms T1("C123", "techroom", "building", 3, &p3);
+T1.GrantAccess(p3);
 	return 0;	
 }
