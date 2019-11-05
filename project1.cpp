@@ -27,17 +27,22 @@ class room{ //BASE CLASS 2
 			string id; //memebers-attributes
 			string type;
 			string building;
+			
 	public:
 			room(string, string , string);
 			room();
-			~room();		
-};
+			~room();
+					
+	bool grantAccess(person p){ //function we need to change the //name so it doesnt overwrite with other classes
+		if(p.GetROLE() == "janitor" ) //no need for a pointer since a janitor can access any room
+		{ cout << " welcome "<< p.GetNAME()<<endl; return true;} else {cout << " Access denied "<<endl; return false ;}} 
+		};
 room::room(){}
 room::~room(){}
 room::room(string ID, string TYPE, string BUILD){id =ID; type=TYPE; building =BUILD;}
 class student:public person{ //declare the inheritance
 	public:
-		
+	student(string i, string n, string r){id =i; name=n; role=r;} //constructer	
 	friend class Clrooms; }; //end declare friendship
 class faculty:public person{ //inheriets publicly from person
 		private:
@@ -55,14 +60,14 @@ class tech:public person { //name of class
 	public:
 		void SetSpeciality(string SP){Speciality =SP;}	
 		string GetSpeciality(void){ return Speciality; }
-		tech(string i, string n, string r, string s){id =i; name=n; role=r; Speciality =s;  }
+		tech(string i, string n, string r, string s){id =i; name=n; role=r; Speciality =s; } //constructer
 		
 	friend class TechRooms;};//end
 class janitor:public person{
-
+	public:
+	janitor(string i, string n, string r){id =i; name=n; role=r;} //constructer		
 		
 	friend class ClRooms;friend class TechRooms;friend class FacOffices;};//end friend classes
-	
 class FacOffices:public room{ //constructer
 	private:
 		faculty* Faculty; //pointer
@@ -72,10 +77,8 @@ class FacOffices:public room{ //constructer
 	    //string Getfaculty(void){ return Faculty; }
 		void Setfaculty(faculty* val){Faculty =val;} 
 		faculty* Getfaculty(){ return Faculty;} //get with a pointer
-		
-		
+	
 		FacOffices(string i, string t, string b, faculty* f){ id =i; type=t; building= b; Faculty=f;}
-		
 		bool GrantAccess(person p){ //function
 		//cout << "Checking access for " << Faculty->GetNAME()<< ".... " <<endl;
 		if(p.GetROLE() == "faculty" && p.GetNAME()==Faculty->GetNAME()) //one condition is engo
@@ -92,17 +95,21 @@ class FacOffices:public room{ //constructer
 };//end
 class ClRooms:public room{
 	private:
-		float capacity;
-		student *st; //a pointer object
+		float capacity; 	
+		student *stu; //a pointer object
 	public:	
 		void SetCapacity(float ca){capacity = ca;}
 		float GetCapacity(void){return capacity;}
-	bool GrantAccess(person p){ //function
-		if(p.GetROLE() == "student" && p.GetNAME()==st->GetNAME()) //one condition is engo
-		{ cout << "welcome "<< p.GetNAME(); return true;}
-		else {cout << "Access denied"; return false ;}} 
 		
-	friend class student;friend class faculty; };//end
+		ClRooms(string i, string t, string b, float c, student *st) 
+		{id =i; type=t; building= b; capacity= c; stu=st;}	
+	bool GrantAccess(person p){ //function
+		if(p.GetROLE() == "student" && p.GetNAME()==stu->GetNAME()) //one condition is engo
+		{ cout << "welcome "<< p.GetNAME(); return true;}
+		else {cout << "Access denied "; return false ;}} 
+		
+	friend class student;friend class faculty; 
+	};//end
 class TechRooms:public room{
 	private:
 		int hazardLevel;
@@ -111,15 +118,12 @@ class TechRooms:public room{
 		void SetHL(int ha){ hazardLevel = ha;}
 		int GetHL(void){return hazardLevel;}	
 		TechRooms(string i, string t, string b, int h, tech * vt)
-		{ 
-		id =i; type=t; building= b; hazardLevel= h; te=vt;
-		}	
-	bool GrantAccess(person p){ //function
-		if(p.GetROLE() == "tech" && p.GetNAME()==te->GetNAME()) //one condition is engo
+		{ id =i; type=t; building= b; hazardLevel=h; te=vt;}	
+  bool GrantAccess(person p){ //function
+		if(p.GetROLE() == "tech" && p.GetNAME()==te->GetNAME()) 
 		{ cout << "welcome "<< p.GetNAME(); return true;}
-		else {cout << "Access denied"; return false ;}} 
-		
-	friend class tech;};//end
+		else
+		{cout << "Access denied "; return false ;}} friend class tech;};//end
 
 int main(){	
 faculty p1("2011","muna","faculty","IT");
@@ -129,5 +133,7 @@ FacOffices O1("C123", "office", "building", &p1);
 O1.GrantAccess(p1);
 TechRooms T1("C123", "techroom", "building", 3, &p3);
 T1.GrantAccess(p3);
+janitor j1("20100","sal","janitor");
+O1.grantAccess(j1);
 	return 0;	
 }
