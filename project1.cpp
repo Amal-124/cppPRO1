@@ -144,14 +144,16 @@ class Students{ //a class for a group of students
 		void removeStudent()
 		{
 		if(nbStudents!=0)
-		{
-			
+		{	
 		nbStudents--;	
 		}
 		else {cout << "Error ";}
 		}
 		
-		void updateStudent(int index, string NewId, string NewName){}
+		void updateStudent(int index, string NewId, string NewName)
+		{
+		
+		}
 		
 		
 };//end
