@@ -124,7 +124,37 @@ class TechRooms:public room{
 		{ cout << "welcome "<< p.GetNAME(); return true;}
 		else
 		{cout << "Access denied "; return false ;}} friend class tech;};//end
-
+		
+class Students{ //a class for a group of students
+	private:
+		student st[30];
+		int nbStudents;
+	public:
+		void SetNBS(int nb){nbStudents =nb;}
+		int GetNBS(void){ return nbStudents; }
+		void addStudent(student s)
+		{ 
+		if(nbStudents<30)
+		{
+		st[nbStudents]= s; //st[0]= s= student, then it will increment to add students to list.
+		nbStudents++;
+		} 
+		else {cout << "There is no Capacity "; }}
+		
+		void removeStudent()
+		{
+		if(nbStudents!=0)
+		{
+			
+		nbStudents--;	
+		}
+		else {cout << "Error ";}
+		}
+		
+		void updateStudent(int index, string NewId, string NewName){}
+		
+		
+};//end
 int main(){	
 faculty p1("2011","muna","faculty","IT");
 faculty p2("2341","maryam","faculty","IT");
