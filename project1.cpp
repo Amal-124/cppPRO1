@@ -131,7 +131,7 @@ class Students{ //a class for a group of students
 		int nbStudents;
 	public:
 		void SetNBS(int nb){nbStudents =nb;}
-		int GetNBS(void){ return nbStudents; }
+		int  GetNBS(void){ return nbStudents; }
 		void addStudent(student s)
 		{ 
 		if(nbStudents<30)
@@ -139,7 +139,7 @@ class Students{ //a class for a group of students
 		st[nbStudents]= s; //st[0]= s= student, then it will increment to add students to list.
 		nbStudents++;
 		} 
-		else {cout << "There is no Capacity "; }}
+		else { cout << "There is no Capacity "; }}
 		
 		void removeStudent()
 		{
