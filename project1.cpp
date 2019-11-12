@@ -129,9 +129,13 @@ class Students{ //a class for a group of students
 	private:
 		student st[30];
 		int nbStudents;
+		string ID; //the room id
 	public:
 		void SetNBS(int nb){nbStudents =nb;}
 		int  GetNBS(void){ return nbStudents; }
+		void SetId(int id1){ID =id1;}
+		string  GetId(void){ return ID; }
+		
 		void addStudent(student s)
 		{ 
 		if(nbStudents<30)
@@ -143,16 +147,19 @@ class Students{ //a class for a group of students
 		
 		void removeStudent()
 		{
-		if(nbStudents!=0)
-		{	
-		nbStudents--;	
-		}
-		else {cout << "Error ";}
+			if(nbStudents!=0)
+			{	
+				nbStudents--;	
+			}
+			else {cout << "Error ";}
 		}
 		
 		void updateStudent(int index, string NewId, string NewName)
 		{
-		
+		  st[index].SetID(NewId);
+		  st[index].SetNAME(NewName);
+		  
+		  
 		}
 		
 		
@@ -167,5 +174,11 @@ TechRooms T1("C123", "techroom", "building", 3, &p3);
 T1.GrantAccess(p3);
 janitor j1("20100","sal","janitor");
 O1.grantAccess(j1);
+student s1("201601", "ahmed","student");
+student s2("201602", "muna","student");
+Students sec1(), sec2(); 
+sec1.addStudent(s1); 
+sec1.addStudent(s2);
+sec2.addStudent(s1);
 	return 0;	
 }
