@@ -145,11 +145,11 @@ class TechRooms:public room{
   bool GrantAccess(person p){ //function
 		if(p.GetROLE() == "tech" && p.GetNAME()==te->GetNAME()) 
 		{ 
-		cout << "welcome "<< p.GetNAME(); return true;
+		   cout << "welcome "<< p.GetNAME(); return true;
 		}
 		else
 		{
-		cout << "Access denied "; return false ;
+		   cout << "Access denied "; return false ;
 		}
 		   } 
 		friend class tech;
