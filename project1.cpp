@@ -33,17 +33,29 @@ class room{ //BASE CLASS 2
 			room();
 			~room();
 					
-	bool grantAccess(person p){ //function we need to change the //name so it doesnt overwrite with other classes
+	bool grantAccess(person p)
+	{ //function we need to change the //name so it doesnt overwrite with other classes because of inheritance
 		if(p.GetROLE() == "janitor" ) //no need for a pointer since a janitor can access any room
-		{ cout << " welcome "<< p.GetNAME()<<endl; return true;} else {cout << " Access denied "<<endl; return false ;}} 
-		};
+		{ 
+		cout << " welcome "<< p.GetNAME()<<endl; 
+		return true;
+		
+		} 
+		else 
+		{
+		cout << " Access denied "<<endl; return false;
+		}
+         } 
+		   };
 room::room(){}
 room::~room(){}
 room::room(string ID, string TYPE, string BUILD){id =ID; type=TYPE; building =BUILD;}
 class student:public person{ //declare the inheritance
 	public:
+	student(){}
 	student(string i, string n, string r){id =i; name=n; role=r;} //constructer	
-	friend class Clrooms; }; //end declare friendship
+	friend class Clrooms; 
+	}; //end declare friendship
 class faculty:public person{ //inheriets publicly from person
 		private:
 		 string Speciality;
@@ -51,9 +63,11 @@ class faculty:public person{ //inheriets publicly from person
 			faculty(string i, string n, string r, string s){id =i; name=n; role=r; Speciality =s;  } //constructer-
 		    string getSpeciality(){return Speciality;}	//constructer that inheiertes
 		    void setSpeciality(string FSP){Speciality =FSP;}
-			void RequestAccess(string id){ } //function
+			void RequestAccess(string id){ } //function not complete yet
 			
-	friend class FacOffices;friend class ClRooms;};//end
+	friend class FacOffices;
+	friend class ClRooms;
+	};//end
 class tech:public person { //name of class	
 	private:
 		string Speciality;
@@ -62,12 +76,16 @@ class tech:public person { //name of class
 		string GetSpeciality(void){ return Speciality; }
 		tech(string i, string n, string r, string s){id =i; name=n; role=r; Speciality =s; } //constructer
 		
-	friend class TechRooms;};//end
+	friend class TechRooms;
+	};//end
 class janitor:public person{
 	public:
 	janitor(string i, string n, string r){id =i; name=n; role=r;} //constructer		
 		
-	friend class ClRooms;friend class TechRooms;friend class FacOffices;};//end friend classes
+	friend class ClRooms;
+	friend class TechRooms;
+	friend class FacOffices;
+	};//end friend classes
 class FacOffices:public room{ //constructer
 	private:
 		faculty* Faculty; //pointer
@@ -101,14 +119,19 @@ class ClRooms:public room{
 		void SetCapacity(float ca){capacity = ca;}
 		float GetCapacity(void){return capacity;}
 		
-		ClRooms(string i, string t, string b, float c, student *st) 
-		{id =i; type=t; building= b; capacity= c; stu=st;}	
+		ClRooms(string i, string t, string b, float c, student *st) {id =i; type=t; building= b; capacity= c; stu=st;}	
 	bool GrantAccess(person p){ //function
 		if(p.GetROLE() == "student" && p.GetNAME()==stu->GetNAME()) //one condition is engo
-		{ cout << "welcome "<< p.GetNAME(); return true;}
-		else {cout << "Access denied "; return false ;}} 
+		{ 
+		cout << "welcome "<< p.GetNAME(); return true;
+		}
+		else {
+		cout << "Access denied "; return false ;
+		}
+		   } 
 		
-	friend class student;friend class faculty; 
+	friend class student;
+	friend class faculty; 
 	};//end
 class TechRooms:public room{
 	private:
@@ -117,13 +140,20 @@ class TechRooms:public room{
 	public:
 		void SetHL(int ha){ hazardLevel = ha;}
 		int GetHL(void){return hazardLevel;}	
-		TechRooms(string i, string t, string b, int h, tech * vt)
-		{ id =i; type=t; building= b; hazardLevel=h; te=vt;}	
+		TechRooms(string i, string t, string b, int h, tech * vt) //constructer
+		{ id =i; type=t; building= b; hazardLevel=h; te=vt;} //tell that old = new variable.
   bool GrantAccess(person p){ //function
 		if(p.GetROLE() == "tech" && p.GetNAME()==te->GetNAME()) 
-		{ cout << "welcome "<< p.GetNAME(); return true;}
+		{ 
+		cout << "welcome "<< p.GetNAME(); return true;
+		}
 		else
-		{cout << "Access denied "; return false ;}} friend class tech;};//end
+		{
+		cout << "Access denied "; return false ;
+		}
+		   } 
+		friend class tech;
+		};//end
 		
 class Students{ //a class for a group of students
 	private:
@@ -140,10 +170,14 @@ class Students{ //a class for a group of students
 		{ 
 		if(nbStudents<30)
 		{
-		st[nbStudents]= s; //st[0]= s= student, then it will increment to add students to list.
-		nbStudents++;
+		  st[nbStudents]= s; //st[0]= s= student, then it will increment to add students to list.
+		  nbStudents++;
 		} 
-		else { cout << "There is no Capacity "; }}
+		else {
+		 cout << "There is no Capacity "<<endl; 
+		 
+		     }
+		 }
 		
 		void removeStudent()
 		{
@@ -176,7 +210,7 @@ janitor j1("20100","sal","janitor");
 O1.grantAccess(j1);
 student s1("201601", "ahmed","student");
 student s2("201602", "muna","student");
-Students sec1(), sec2(); 
+Students sec1, sec2; 
 sec1.addStudent(s1); 
 sec1.addStudent(s2);
 sec2.addStudent(s1);
