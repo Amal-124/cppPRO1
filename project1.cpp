@@ -99,12 +99,12 @@ class FacOffices:public room{ //constructer
 		FacOffices(string i, string t, string b, faculty* f){ id =i; type=t; building= b; Faculty=f;}
 		bool GrantAccess(person p){ //function
 		//cout << "Checking access for " << Faculty->GetNAME()<< ".... " <<endl;
-		if(p.GetROLE() == "faculty" && p.GetNAME()==Faculty->GetNAME()) //one condition is engo
+	if(p.GetROLE() == "faculty" && p.GetNAME()==Faculty->GetNAME()) //one condition is engo
 		{ 
 			cout << "welcome "<< p.GetNAME() <<endl;
 			return true;
 		}
-		else 
+	else 
 		{
 			cout << "Access denied "; return false ;
 		}
@@ -214,5 +214,6 @@ Students sec1, sec2;
 sec1.addStudent(s1); 
 sec1.addStudent(s2);
 sec2.addStudent(s1);
+
 	return 0;	
 }

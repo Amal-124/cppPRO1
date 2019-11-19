@@ -165,6 +165,7 @@ class Students{ //a class for a group of students
 		int  GetNBS(void){ return nbStudents; }
 		void SetId(int id1){ID =id1;}
 		string  GetId(void){ return ID; }
+		Students(int nb, string i){nbStudents =nb; ID=i;}
 		
 		void addStudent(student s)
 		{ 
@@ -265,7 +266,7 @@ case 5:
 	cout<<"Give the id of the janitor \t"; cin>>id;
 	cout<<"Give the name of the janitor\t"; cin>>name;
 	cout<<"Give the role of the janitor \t"; cin>>role;
-	student s(id, name, role );
+	janitor j(id, name, role );
 	break;
 }
 
