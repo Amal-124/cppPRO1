@@ -200,98 +200,384 @@ class Students{ //a class for a group of students
 		
 };//end
 int main(){	
-int choice;
-string id;
-string type;
-string building;
-string name;
-string role;
-string Speciality;
-while(1){
-system("cls"); //to remove the menu every time
-cout<<"choose an option \n";
-cout<<"[1] Add Room \n";
-cout<<"[2] Add Faculty \n";
-cout<<"[3] Add Tech \n";
-cout<<"[4] Add Student \n";
-cout<<"[5] Add janitor \n";
-cout<<"[6] Quit \n";
-cout<<"your choice \t";
-cin>> choice;
-switch(choice)
-{
-case 1: 
-{
-	
-	cout<<"adding a room \n";
-	cout<<"Give the id of the room \t"; cin>>id;
-	cout<<"Give the type of the room \t"; cin>>type;
-	cout<<"Give the building of the room \t"; cin>>building;
-	room r(id, type, building ); //calling the function
-	break;
+int choice; 
 
-}
-case 2:	
-{
-	cout<<"adding a faculty \n";
-	cout<<"Give the id of the faculty \t"; cin>>id;
-	cout<<"Give the name of the faculty \t"; cin>>name;
-	cout<<"Give the role of the faculty \t"; cin>>role;
-	cout<<"Give the speciality of the faculty \t"; cin>>Speciality;
-	faculty f(id, name, role, Speciality );
-	break;
-}
-case 3:
-{
-	cout<<"adding a technician \n";
-	cout<<"Give the id of the technician \t"; cin>>id;
-	cout<<"Give the name of the technician \t"; cin>>name;
-	cout<<"Give the role of the technician \t"; cin>>role;
-	cout<<"Give the speciality of the technician  \t"; cin>>Speciality;
-	tech t(id, name, role, Speciality );
-	break;
-}
-case 4:
-{
-	cout<<"adding a student \n";
-	cout<<"Give the id of the student \t"; cin>>id;
-	cout<<"Give the name of the student\t"; cin>>name;
-	cout<<"Give the role of the student \t"; cin>>role;
-	student s(id, name, role );
-	break;
-}
-case 5:
-{
-	cout<<"adding a janitor \n";
-	cout<<"Give the id of the janitor \t"; cin>>id;
-	cout<<"Give the name of the janitor\t"; cin>>name;
-	cout<<"Give the role of the janitor \t"; cin>>role;
-	janitor j(id, name, role );
-	break;
-}
+string id; 
 
+string type; 
 
+string building; 
 
+string name; 
 
+string role; 
 
+string Speciality; 
 
+while(1){ 
 
+system("cls"); //to remove the menu every time 
 
+cout<<"choose an option \n"; 
 
+cout<<"[1]  Add Room \n"; 
 
+cout<<"[2]  Add Faculty \n"; 
 
+cout<<"[3]  Add Tech \n"; 
 
+cout<<"[4]  Add Student \n"; 
 
+cout<<"[5]  Add janitor \n"; 
 
+cout<<"[6]  Delete Room \n"; 
 
+cout<<"[7]  Delete Faculty \n"; 
 
-case 6: exit(0);
-default: cout<<"choose from 1-4 \n"; break;	
+cout<<"[8]  Delete Tech \n"; 
 
+cout<<"[9]  Delete Student \n"; 
 
+cout<<"[10] Delete janitor \n"; 
 
-}
-  	}
+cout<<"[11] Update Room \n"; 
 
+cout<<"[12] Update Faculty \n"; 
+
+cout<<"[13] Update Tech \n"; 
+
+cout<<"[14] Update Student \n"; 
+
+cout<<"[15] Update janitor \n"; 
+
+cout<<"[16] Add Students \n";
+
+cout<<"[17] Delete Students \n";
+
+cout<<"[18] Update Students \n";
+
+cout<<"[19] Quit \n"; 
+
+cout<<"your choice \t"; 
+
+cin>> choice; 
+
+switch(choice) 
+
+{ 
+
+case 1:  
+
+{ 
+
+     
+
+    cout<<"adding a room \n"; 
+
+    cout<<"Give the id of the room \t"; cin>>id; 
+
+    cout<<"Give the type of the room \t"; cin>>type; 
+
+    cout<<"Give the building of the room \t"; cin>>building; 
+
+    room r(id, type, building ); //calling the function 
+
+    break; 
+
+  
+
+} 
+
+case 2:     
+
+{ 
+
+    cout<<"adding a faculty \n"; 
+
+    cout<<"Give the id of the faculty \t"; cin>>id; 
+
+    cout<<"Give the name of the faculty \t"; cin>>name; 
+
+    cout<<"Give the role of the faculty \t"; cin>>role; 
+
+    cout<<"Give the speciality of the faculty \t"; cin>>Speciality; 
+
+    faculty f(id, name, role, Speciality ); 
+
+    break; 
+
+} 
+
+case 3: 
+
+{ 
+
+    cout<<"adding a technician \n"; 
+
+    cout<<"Give the id of the technician \t"; cin>>id; 
+
+    cout<<"Give the name of the technician \t"; cin>>name; 
+
+    cout<<"Give the role of the technician \t"; cin>>role; 
+
+    cout<<"Give the speciality of the technician  \t"; cin>>Speciality; 
+
+    tech t(id, name, role, Speciality ); 
+
+    break; 
+
+} 
+
+case 4: 
+
+{ 
+
+    cout<<"adding a student \n"; 
+
+    cout<<"Give the id of the student \t"; cin>>id; 
+
+    cout<<"Give the name of the student\t"; cin>>name; 
+
+    cout<<"Give the role of the student \t"; cin>>role; 
+
+    student s(id, name, role ); 
+
+    break; 
+
+} 
+
+case 5: 
+
+{ 
+
+    cout<<"adding a janitor \n"; 
+
+    cout<<"Give the id of the janitor \t"; cin>>id; 
+
+    cout<<"Give the name of the janitor\t"; cin>>name; 
+
+    cout<<"Give the role of the janitor \t"; cin>>role; 
+
+    janitor j(id, name, role ); 
+
+    break; 
+
+} 
+
+case 6: 
+
+{ 
+
+    cout<<"Deleting a room \n"; 
+
+    cout<<"Give the id of the room \t"; cin>>id; 
+
+    cout<<"Give the type of the room \t"; cin>>type; 
+
+    cout<<"Give the building of the room \t"; cin>>building; 
+
+    room r(id, type, building ); //calling the function 
+
+    break; 
+
+} 
+
+case 7: 
+
+{ 
+
+    cout<<"Deleting a faculty \n"; 
+
+    cout<<"Give the id of the faculty \t"; cin>>id; 
+
+    cout<<"Give the name of the faculty \t"; cin>>name; 
+
+    cout<<"Give the role of the faculty \t"; cin>>role; 
+
+    cout<<"Give the speciality of the faculty \t"; cin>>Speciality; 
+
+    faculty f(id, name, role, Speciality ); 
+
+    break; 
+
+} 
+
+case 8: 
+
+{ 
+
+    cout<<"Deleting a technician \n"; 
+
+    cout<<"Give the id of the technician \t"; cin>>id; 
+
+    cout<<"Give the name of the technician \t"; cin>>name; 
+
+    cout<<"Give the role of the technician \t"; cin>>role; 
+
+    cout<<"Give the speciality of the technician  \t"; cin>>Speciality; 
+
+    tech t(id, name, role, Speciality ); 
+
+    break;   
+
+     
+
+} 
+
+case 9: 
+
+{ 
+
+    cout<<"Deleting a student \n"; 
+
+    cout<<"Give the id of the student \t"; cin>>id; 
+
+    cout<<"Give the name of the student\t"; cin>>name; 
+
+    cout<<"Give the role of the student \t"; cin>>role; 
+
+    student s(id, name, role ); 
+
+    break;  
+
+     
+
+} 
+
+case 10: 
+
+{ 
+
+    cout<<"Deleting a janitor \n"; 
+
+    cout<<"Give the id of the janitor \t"; cin>>id; 
+
+    cout<<"Give the name of the janitor\t"; cin>>name; 
+
+    cout<<"Give the role of the janitor \t"; cin>>role; 
+
+    janitor j(id, name, role ); 
+
+    break; 
+
+} 
+
+case 11: 
+
+{ 
+
+    cout<<"updating a room \n"; 
+
+    cout<<"Give the id of the room \t"; cin>>id; 
+
+    cout<<"Give the type of the room \t"; cin>>type; 
+
+    cout<<"Give the building of the room \t"; cin>>building; 
+
+    room r(id, type, building ); //calling the function 
+
+    break; 
+
+} 
+
+case 12: 
+
+{ 
+
+    cout<<"updating a faculty \n"; 
+
+    cout<<"Give the id of the faculty \t"; cin>>id; 
+
+    cout<<"Give the name of the faculty \t"; cin>>name; 
+
+    cout<<"Give the role of the faculty \t"; cin>>role; 
+
+    cout<<"Give the speciality of the faculty \t"; cin>>Speciality; 
+
+    faculty f(id, name, role, Speciality ); 
+
+    break; 
+
+} 
+
+  
+
+case 13: 
+
+{ 
+
+    cout<<"updating a technician \n"; 
+
+    cout<<"Give the id of the technician \t"; cin>>id; 
+
+    cout<<"Give the name of the technician \t"; cin>>name; 
+
+    cout<<"Give the role of the technician \t"; cin>>role; 
+
+    cout<<"Give the speciality of the technician  \t"; cin>>Speciality; 
+
+    tech t(id, name, role, Speciality ); 
+
+    break;  
+
+} 
+
+case 14: 
+
+{ 
+
+    cout<<"updating a student \n"; 
+
+    cout<<"Give the id of the student \t"; cin>>id; 
+
+    cout<<"Give the name of the student\t"; cin>>name; 
+
+    cout<<"Give the role of the student \t"; cin>>role; 
+
+    student s(id, name, role ); 
+
+    break;  
+
+     
+
+} 
+
+  
+
+case 15: 
+
+{ 
+
+    cout<<"updating a janitor \n"; 
+
+    cout<<"Give the id of the janitor \t"; cin>>id; 
+
+    cout<<"Give the name of the janitor\t"; cin>>name; 
+
+    cout<<"Give the role of the janitor \t"; cin>>role; 
+
+    janitor j(id, name, role ); 
+
+    break; 
+
+} 
+
+  
+
+case 19: exit(0); 
+
+default: cout<<"choose from 1-4 \n"; break;     
+
+  
+
+  
+
+  
+
+} 
+
+      } 
+
+  
 	return 0;	
 }
